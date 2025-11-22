@@ -51,10 +51,8 @@
 
     <div class="layout-container">
 
-        <!-- Hero Section: Unified Profile + About + Digital Twin -->
-        <section id="hero" class="hero-section-centered">
-            
-            <!-- Unified Profile & About Card -->
+        <!-- Top Row: Centered Profile (Full Width Span) -->
+        <section id="hero" class="hero-section-top">
             <div class="hero-card profile-container">
                 <div class="profile-header-grid">
                     <div class="profile-image-wrapper">
@@ -82,126 +80,157 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Digital Twin Card -->
-            <div class="hero-card digital-twin-container">
-                <div class="dt-header">
-                    <h3 class="dt-title">DIGITAL TWIN</h3>
-                    <p class="dt-subtitle">Chat with me</p>
-                </div>
-
-                <div class="llm-chat-window" id="llm-response">
-                    <!-- Responses will appear here -->
-                </div>
-
-                <div class="dt-prompts-label">Ask me about:</div>
-                <div class="dt-prompts">
-                    <button class="dt-tag" data-prompt="What is your tech stack?">Tech Stack</button>
-                    <button class="dt-tag" data-prompt="Tell me about your projects">Projects</button>
-                    <button class="dt-tag" data-prompt="What is your experience?">Experience</button>
-                    <button class="dt-tag" data-prompt="Do you have any hobbies?">Hobbies</button>
-                </div>
-
-                <div class="dt-input-wrapper">
-                    <input type="text" class="dt-input" id="llm-input" placeholder="Type your message...">
-                    <button class="dt-send-btn" id="llm-submit">
-                        →
-                    </button>
-                </div>
-            </div>
-
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="content-section">
-            <h3 class="section-heading">Experience</h3>
-            <div class="experience-timeline">
+        <!-- Main Content Grid: Content Left | Sidebar Right -->
+        <div class="main-content-grid">
+            
+            <!-- Left Column: Experience & Projects -->
+            <div class="content-column">
+                
+                <!-- Experience Section -->
+                <section id="experience" class="content-section">
+                    <h3 class="section-heading">Experience</h3>
+                    <div class="experience-grid">
 
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <h4 class="role-title">Computer Vision Engineer</h4>
-                        <span class="timeline-date">Feb 2025 — Present</span>
-                    </div>
-                    <div class="company-name">Arizona State University</div>
-                    <p class="timeline-desc">
-                        Developing automated pipelines using photogrammetry and computer vision to generate high-resolution 3D models of lunar and antarctic regions. Integrating these models into VR systems for scientific analysis.
-                    </p>
-                    <div class="tags-row">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Photogrammetry</span>
-                        <span class="tech-tag">VR</span>
-                    </div>
-                </div>
+                        <div class="experience-card">
+                            <div class="timeline-header">
+                                <h4 class="role-title">Computer Vision Engineer</h4>
+                                <span class="timeline-date">Feb 2025 — Present</span>
+                            </div>
+                            <div class="company-name">Arizona State University</div>
+                            <p class="timeline-desc">
+                                Developing automated pipelines using photogrammetry and computer vision to generate high-resolution 3D models of lunar and antarctic regions.
+                            </p>
+                            <div class="tags-row">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Photogrammetry</span>
+                                <span class="tech-tag">VR</span>
+                            </div>
+                        </div>
 
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <h4 class="role-title">AI Research Intern</h4>
-                        <span class="timeline-date">Jan 2024 — Aug 2024</span>
-                    </div>
-                    <div class="company-name">Indian Space Research Organisation (ISRO)</div>
-                    <p class="timeline-desc">
-                        Implemented semantic segmentation (U-Net, EfficientNet) for satellite imagery. Developed a weather-focused LLM using LangChain. Designed end-to-end image processing pipelines with GDAL.
-                    </p>
-                    <div class="tags-row">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">Satellite Imagery</span>
-                    </div>
-                </div>
+                        <div class="experience-card">
+                            <div class="timeline-header">
+                                <h4 class="role-title">AI Research Intern</h4>
+                                <span class="timeline-date">Jan 2024 — Aug 2024</span>
+                            </div>
+                            <div class="company-name">ISRO</div>
+                            <p class="timeline-desc">
+                                Implemented semantic segmentation (U-Net, EfficientNet) for satellite imagery. Developed a weather-focused LLM using LangChain.
+                            </p>
+                            <div class="tags-row">
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">Satellite</span>
+                            </div>
+                        </div>
 
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <h4 class="role-title">AI Solutions Developer</h4>
-                        <span class="timeline-date">May 2023 — Jan 2024</span>
-                    </div>
-                    <div class="company-name">Dhrumin Gas Service</div>
-                    <p class="timeline-desc">
-                        Built OCR automation tools for handwritten Gujarati text and optimized delivery routes using Dijkstra's algorithm.
-                    </p>
-                    <div class="tags-row">
-                        <span class="tech-tag">OCR</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Optimization</span>
-                    </div>
-                </div>
+                        <div class="experience-card">
+                            <div class="timeline-header">
+                                <h4 class="role-title">AI Solutions Developer</h4>
+                                <span class="timeline-date">May 2023 — Jan 2024</span>
+                            </div>
+                            <div class="company-name">Dhrumin Gas Service</div>
+                            <p class="timeline-desc">
+                                Built OCR automation tools for handwritten Gujarati text and optimized delivery routes using Dijkstra's algorithm.
+                            </p>
+                            <div class="tags-row">
+                                <span class="tech-tag">OCR</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">Optimization</span>
+                            </div>
+                        </div>
 
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="content-section">
+                    <h3 class="section-heading">Selected Projects</h3>
+                    <div class="projects-grid-dense">
+
+                        <a href="#" class="project-card-modern">
+                            <div class="project-top">
+                                <h4 class="project-name">Assignment Solver</h4>
+                                <span class="arrow-link">↗</span>
+                            </div>
+                            <p class="project-summary">Automated question solving tool integrating screen snipping, OCR, and LLMs.</p>
+                            <div class="project-tech">Python · LLM</div>
+                        </a>
+
+                        <a href="#" class="project-card-modern">
+                            <div class="project-top">
+                                <h4 class="project-name">Automated ML</h4>
+                                <span class="arrow-link">↗</span>
+                            </div>
+                            <p class="project-summary">No-code ML model training and optimization platform.</p>
+                            <div class="project-tech">Streamlit · AutoML</div>
+                        </a>
+
+                        <a href="#" class="project-card-modern">
+                            <div class="project-top">
+                                <h4 class="project-name">Air Drums</h4>
+                                <span class="arrow-link">↗</span>
+                            </div>
+                            <p class="project-summary">Virtual drum simulator using IMU sensors and Deep Learning.</p>
+                            <div class="project-tech">IoT · DL</div>
+                        </a>
+                        
+                        <a href="#" class="project-card-modern">
+                            <div class="project-top">
+                                <h4 class="project-name">3D Scanner</h4>
+                                <span class="arrow-link">↗</span>
+                            </div>
+                            <p class="project-summary">Photogrammetry pipeline for creating 3D assets from video.</p>
+                            <div class="project-tech">NeRF · Python</div>
+                        </a>
+
+                        <a href="#" class="project-card-modern">
+                            <div class="project-top">
+                                <h4 class="project-name">Smart CCTV</h4>
+                                <span class="arrow-link">↗</span>
+                            </div>
+                            <p class="project-summary">Real-time anomaly detection in surveillance feeds.</p>
+                            <div class="project-tech">YOLO · CV</div>
+                        </a>
+
+                    </div>
+                </section>
+            
             </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="content-section">
-            <h3 class="section-heading">Selected Projects</h3>
-            <div class="projects-grid-modern">
+            <!-- Right Sidebar: Digital Twin -->
+            <aside class="sidebar-column">
+                <div class="sticky-sidebar">
+                    <div class="hero-card digital-twin-container-tall">
+                        <div class="dt-header">
+                            <h3 class="dt-title">DIGITAL TWIN</h3>
+                            <p class="dt-subtitle">Chat with me</p>
+                        </div>
 
-                <a href="#" class="project-card-modern">
-                    <div class="project-top">
-                        <h4 class="project-name">Assignment Solver</h4>
-                        <span class="arrow-link">↗</span>
+                        <div class="llm-chat-window" id="llm-response">
+                            <!-- Responses will appear here -->
+                        </div>
+
+                        <div class="dt-prompts-label">Ask me about:</div>
+                        <div class="dt-prompts">
+                            <button class="dt-tag" data-prompt="Tech Stack?">Tech Stack</button>
+                            <button class="dt-tag" data-prompt="Projects?">Projects</button>
+                            <button class="dt-tag" data-prompt="Experience?">Experience</button>
+                            <button class="dt-tag" data-prompt="Hobbies?">Hobbies</button>
+                        </div>
+
+                        <div class="dt-input-wrapper">
+                            <input type="text" class="dt-input" id="llm-input" placeholder="Message...">
+                            <button class="dt-send-btn" id="llm-submit">
+                                →
+                            </button>
+                        </div>
                     </div>
-                    <p class="project-summary">Automated question solving tool integrating screen snipping, advanced OCR, and LLMs for real-time answers.</p>
-                    <div class="project-tech">Python · Tkinter · LLM</div>
-                </a>
+                </div>
+            </aside>
 
-                <a href="#" class="project-card-modern">
-                    <div class="project-top">
-                        <h4 class="project-name">Automated ML Platform</h4>
-                        <span class="arrow-link">↗</span>
-                    </div>
-                    <p class="project-summary">Streamlit web app for no-code ML model training, evaluation, and hyperparameter optimization using PyCaret.</p>
-                    <div class="project-tech">Streamlit · PyCaret · AutoML</div>
-                </a>
-
-                <a href="#" class="project-card-modern">
-                    <div class="project-top">
-                        <h4 class="project-name">Air Drums</h4>
-                        <span class="arrow-link">↗</span>
-                    </div>
-                    <p class="project-summary">Virtual drum simulator using IMU sensors and deep learning algorithms for motion error correction.</p>
-                    <div class="project-tech">Deep Learning · IoT · Sensors</div>
-                </a>
-
-            </div>
-        </section>
+        </div>
 
         <footer class="site-footer">
             <p>© 2025 Kevin Doshi. Built with AI.</p>
