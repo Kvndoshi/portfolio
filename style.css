@@ -11,6 +11,7 @@
     --shadow-dark: rgba(0, 0, 0, 0.3);
     --box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
     --box-shadow-inset: inset 8px 8px 16px var(--shadow-dark), inset -8px -8px 16px var(--shadow-light);
+    --glow-shadow: 0 0 15px rgba(0, 206, 201, 0.4), 0 0 30px rgba(0, 206, 201, 0.2);
     
     --font-main: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -29,6 +30,7 @@ body.light-mode {
     --shadow-dark: #a3b1c6;
     --box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
     --box-shadow-inset: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+    --glow-shadow: 0 0 15px rgba(9, 132, 227, 0.4), 0 0 30px rgba(9, 132, 227, 0.2);
 }
 
 * {
@@ -43,6 +45,7 @@ body {
     font-family: var(--font-main);
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
 /* Theme Toggle Button */
@@ -67,6 +70,7 @@ body {
 
 .theme-toggle:hover {
     transform: translateY(-2px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .theme-toggle:active {
@@ -115,6 +119,7 @@ body.light-mode .moon-icon {
     border-radius: var(--border-radius);
     background: var(--card-bg);
     box-shadow: var(--box-shadow);
+    z-index: 100;
 }
 
 .profile-section {
@@ -125,13 +130,41 @@ body.light-mode .moon-icon {
     text-align: center;
 }
 
-.profile-photo {
+/* Profile Scan Effect */
+.profile-photo-container {
+    position: relative;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    object-fit: cover;
+    overflow: hidden;
     border: 5px solid var(--card-bg);
     box-shadow: var(--box-shadow);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: scan 3s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
 }
 
 .name {
@@ -147,6 +180,18 @@ body.light-mode .moon-icon {
     font-size: 0.9rem;
     color: var(--accent);
     font-weight: 500;
+    min-height: 3em; /* Reserve space for 2 lines of text */
+}
+
+/* Cursor effect for typing */
+.role::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .bio {
@@ -183,6 +228,7 @@ body.light-mode .moon-icon {
 .nav-link:hover {
     color: var(--accent);
     transform: translateY(-2px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .nav-link.active {
@@ -213,6 +259,7 @@ body.light-mode .moon-icon {
 .social-icon:hover {
     color: var(--accent);
     transform: translateY(-3px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .social-icon:active {
@@ -234,6 +281,16 @@ body.light-mode .moon-icon {
     box-shadow: var(--box-shadow);
     padding: 3rem;
     transition: all 0.3s ease;
+    
+    /* Scroll Reveal Defaults */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-container.reveal {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-title {
@@ -311,6 +368,7 @@ body.light-mode .moon-icon {
 .prompt-btn:hover {
     color: var(--accent);
     transform: translateY(-2px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .prompt-btn:active {
@@ -360,6 +418,7 @@ body.light-mode .moon-icon {
 .llm-submit:hover {
     transform: translateY(-2px);
     color: var(--text-primary);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .llm-submit:active {
@@ -402,6 +461,8 @@ body.light-mode .moon-icon {
 
 .experience-item:hover {
     transform: translateY(-5px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
+    border-color: rgba(0, 206, 201, 0.1);
 }
 
 .date {
@@ -466,6 +527,8 @@ body.light-mode .moon-icon {
 
 .project-item:hover {
     transform: translateY(-5px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
+    border: 1px solid rgba(0, 206, 201, 0.1);
 }
 
 .project-title {
@@ -504,6 +567,7 @@ body.light-mode .moon-icon {
 
 .hackathon-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .hackathon-image-container {
@@ -621,6 +685,7 @@ body.light-mode .moon-icon {
 .submit-btn:hover {
     transform: translateY(-2px);
     color: var(--text-primary);
+    box-shadow: var(--box-shadow), var(--glow-shadow);
 }
 
 .submit-btn:active {
@@ -654,14 +719,9 @@ footer {
     }
 
     .nav-links {
-        display: none; /* Hide sidebar nav on mobile, maybe replace with hamburger later or just rely on scroll */
+        display: none; /* Hide sidebar nav on mobile */
     }
     
-    /* Alternative: Horizontal Scroll Nav for Mobile */
-    .nav-links.mobile-visible {
-        display: flex;
-    }
-
     .profile-section {
         width: 100%;
     }

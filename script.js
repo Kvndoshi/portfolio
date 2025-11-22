@@ -57,6 +57,71 @@ navLinks.forEach(link => {
     });
 });
 
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.section-container');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            revealObserver.unobserve(entry.target); // Only animate once
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+});
+
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
+
+
+// Role Typewriter Effect
+const roleElement = document.querySelector('.role');
+const roles = [
+    "Computer Vision Engineer",
+    "AI/ML Specialist",
+    "Deep Learning Researcher",
+    "Photogrammetry Expert"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typeSpeed = 100;
+
+function typeRole() {
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+        roleElement.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+    } else {
+        roleElement.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+    }
+
+    if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 500; // Pause before typing next
+    }
+
+    setTimeout(typeRole, typeSpeed);
+}
+
+// Start typing effect if element exists
+if (roleElement) {
+    typeRole();
+}
+
+
 // KVN LLM Interaction
 const llmInput = document.getElementById('llm-input');
 const llmSubmit = document.getElementById('llm-submit');
