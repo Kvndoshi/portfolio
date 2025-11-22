@@ -108,7 +108,7 @@ function handleLLMSubmit() {
 function generateMockResponse(query) {
     // Simple keyword matching for demo purposes
     const q = query.toLowerCase();
-    if (q.includes('skill') || q.includes('stack')) {
+    if (q.includes('skill') || q.includes('stack') || q.includes('technical')) {
         return "My technical expertise includes **Python, PyTorch, and Computer Vision**. I specialize in building automated pipelines for 3D reconstruction and semantic segmentation. I'm also experienced with LLMs, LangChain, and embedded AI systems like ESP32.";
     } else if (q.includes('isro')) {
         return "At **ISRO**, I worked as an AI Research Intern where I implemented semantic segmentation models (U-Net, EfficientNet) for satellite imagery. I also developed a weather-focused LLM using LangChain to analyze meteorological data.";
@@ -146,4 +146,44 @@ function typeWriter(text, element) {
         }
     }
     type();
+}
+
+// Contact Form Handling
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalText = submitBtn.innerText;
+
+        // Simulate sending
+        submitBtn.innerText = 'Sending...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            // Construct mailto link
+            const subject = `Portfolio Contact from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            const mailtoLink = `mailto:kevindoshi17@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open mail client
+            window.location.href = mailtoLink;
+            
+            // Reset form visual state
+            submitBtn.innerText = 'Message Opened!';
+            submitBtn.style.color = '#4ADE80';
+            
+            setTimeout(() => {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.color = '';
+                contactForm.reset();
+            }, 3000);
+        }, 1000);
+    });
 }

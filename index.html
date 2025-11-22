@@ -19,8 +19,8 @@
 
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
+        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -31,7 +31,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
-        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
     </button>
@@ -41,68 +42,37 @@
         <!-- Left Sidebar: Fixed Profile -->
         <aside class="sidebar">
             <div class="profile-section">
-                <div class="profile-header-flex">
-                    <div class="profile-info-text">
-                        <h1 class="name">Kevin Doshi</h1>
-                        <h2 class="role">Computer Vision Engineer &<br>AI/ML Specialist</h2>
-                    </div>
-                    <img src="profile.jpg" alt="Kevin Doshi" class="profile-photo">
+                <img src="profile.jpg" alt="Kevin Doshi" class="profile-photo">
+                <div class="profile-info-text">
+                    <h1 class="name">Kevin Doshi</h1>
+                    <h2 class="role">Computer Vision Engineer &<br>AI/ML Specialist</h2>
                 </div>
                 <p class="bio">
-                    M.S. Computer Science student at Arizona State University (4.00 GPA) with expertise in AI/ML,
-                    Computer Vision, and Deep Learning.
-                    Currently developing automated 3D reconstruction pipelines at ASU's Digital Discovery Initiative,
-                    collaborating with NASA and Lunar Outpost.
+                    M.S. Computer Science student at Arizona State University (4.00 GPA).
+                    Building the future with Computer Vision, Deep Learning, and Photogrammetry.
                 </p>
             </div>
 
             <nav class="nav-links">
-                <a href="#about" class="nav-link">
-                    <span class="nav-line"></span>
-                    <span>About</span>
-                </a>
-                <a href="#kvn-llm" class="nav-link">
-                    <span class="nav-line"></span>
-                    <span>KVN LLM</span>
-                </a>
-                <a href="#experience" class="nav-link">
-                    <span class="nav-line"></span>
-                    <span>Experience</span>
-                </a>
-                <a href="#projects" class="nav-link">
-                    <span class="nav-line"></span>
-                    <span>Projects</span>
-                </a>
-                <a href="#hackathons" class="nav-link">
-                    <span class="nav-line"></span>
-                    <span>Hackathons</span>
-                </a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#kvn-llm" class="nav-link">KVN LLM</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#hackathons" class="nav-link">Hackathons</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="social-links">
-                <a href="http://www.github.com/Kvndoshi" class="social-icon" title="GitHub">
+                <a href="http://www.github.com/Kvndoshi" class="social-icon" title="GitHub" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/kvndoshi" class="social-icon" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/kvndoshi" class="social-icon" title="LinkedIn" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-                <a href="tel:602-214-2862" class="social-icon" title="Phone">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
-                        <path
-                            d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
-                    </svg>
-                </a>
-                <a href="mailto:kevindoshi17@gmail.com" class="social-icon" title="Email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
                     </svg>
                 </a>
             </div>
@@ -113,6 +83,7 @@
 
             <!-- About Section -->
             <section id="about" class="section-container">
+                <h3 class="section-title">About Me</h3>
                 <p class="job-desc" style="margin-bottom: 1rem;">
                     I'm a graduate student pursuing my <strong>M.S. in Computer Science at Arizona State
                         University</strong> (4.00 GPA), specializing in AI/ML, Computer Vision, and Deep Learning.
@@ -129,7 +100,7 @@
             </section>
 
             <!-- KVN LLM Section -->
-            <section id="kvn-llm" class="section-container llm-section">
+            <section id="kvn-llm" class="section-container">
                 <div class="llm-header">
                     <h3 class="section-title">KVN LLM</h3>
                     <span class="llm-badge">AI-Powered</span>
@@ -140,7 +111,6 @@
                 </p>
 
                 <div class="llm-prompts">
-                    <p class="prompts-label">Try asking:</p>
                     <div class="prompt-buttons">
                         <button class="prompt-btn" data-prompt="What are your main technical skills?">💻 Technical
                             Skills</button>
@@ -155,9 +125,8 @@
 
                 <div class="llm-container">
                     <input type="text" class="llm-input" id="llm-input" placeholder="Ask me anything...">
-                    <button class="llm-submit" id="llm-submit">
-                        <span class="submit-text">Send</span>
-                        <span class="submit-icon">→</span>
+                    <button class="llm-submit" id="llm-submit" aria-label="Send">
+                        →
                     </button>
                 </div>
                 <div class="llm-response" id="llm-response"></div>
@@ -171,19 +140,13 @@
                     <div class="experience-item">
                         <div class="date">Feb 2025 — Present</div>
                         <div class="job-details">
-                            <h4 class="job-title">Computer Vision Engineer · Arizona State University</h4>
-                            <p class="job-desc job-desc-short">
-                                Developing automated 3D reconstruction pipelines using photogrammetry and computer
-                                vision for NASA collaboration.
-                            </p>
-                            <p class="job-desc job-desc-full">
+                            <h4 class="job-title">Computer Vision Engineer</h4>
+                            <div class="company">Arizona State University</div>
+                            <p class="job-desc">
                                 Developing an automated pipeline using photogrammetry and computer vision to generate
                                 high-resolution 3D models of inaccessible regions like the Moon, Antarctica, and coral
-                                reefs from aerial and terrestrial data.
-                                Collaborating with NASA and Lunar Outpost to process and integrate 3D reconstructions
+                                reefs. Collaborating with NASA and Lunar Outpost to integrate 3D reconstructions
                                 into VR systems for scientific analysis.
-                                Processing satellite and drone imagery to create accurate digital twins for research and
-                                exploration purposes.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">Python</span>
@@ -197,23 +160,12 @@
                     <div class="experience-item">
                         <div class="date">Jan 2024 — Aug 2024</div>
                         <div class="job-details">
-                            <h4 class="job-title">AI Research Intern · Indian Space Research Organisation (ISRO)</h4>
-                            <p class="job-desc job-desc-short">
-                                Implemented semantic segmentation and developed a weather-focused LLM for satellite
-                                imagery analysis.
-                            </p>
-                            <p class="job-desc job-desc-full">
-                                Implemented semantic segmentation using PyTorch with U-Net EfficientNet and SegFormer
-                                architectures for satellite imagery analysis. Performed domain adaptation by training on
-                                datasets like OpenEarthMap and LoveDA, predicting on Cartosat data.
-                                Contributed to the development of a weather-focused LLM by integrating ISRO resources,
-                                datasets, and multiple APIs using LangChain. Applied prompt engineering, generative AI
-                                techniques, and fine-tuning to improve accuracy.
-                                Designed an end-to-end pipeline for satellite imagery processing that performed image
-                                correction, high-quality image generation, batch processing, and output evaluation using
-                                GDAL, QGIS, and Python.
-                                Currently conducting research on the impact of EfficientNet architectures for geospatial
-                                mapping.
+                            <h4 class="job-title">AI Research Intern</h4>
+                            <div class="company">Indian Space Research Organisation (ISRO)</div>
+                            <p class="job-desc">
+                                Implemented semantic segmentation using PyTorch (U-Net, EfficientNet, SegFormer) for satellite imagery analysis.
+                                Contributed to a weather-focused LLM using LangChain and generative AI.
+                                Designed an end-to-end pipeline for satellite imagery processing using GDAL and QGIS.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">PyTorch</span>
@@ -227,18 +179,11 @@
                     <div class="experience-item">
                         <div class="date">May 2023 — Jan 2024</div>
                         <div class="job-details">
-                            <h4 class="job-title">AI Solutions Developer · Dhrumin Gas Service</h4>
-                            <p class="job-desc job-desc-short">
-                                Developed AI automation tools for handwritten Gujarati OCR and route optimization.
-                            </p>
-                            <p class="job-desc job-desc-full">
-                                Implemented AI algorithms to convert handwritten Gujarati language data to text using
-                                computer vision techniques, developing an automation tool with a responsive UI built in
-                                Flask and Bootstrap that streamlined data entry and achieved a 4x efficiency
-                                improvement.
-                                Integrated Dijkstra's algorithm to optimize delivery route planning and scheduling.
-                                Developed an interactive dashboard using Flask and Bootstrap to visualize efficient
-                                routes and performance metrics, reducing travel time and overall costs.
+                            <h4 class="job-title">AI Solutions Developer</h4>
+                            <div class="company">Dhrumin Gas Service</div>
+                            <p class="job-desc">
+                                Developed AI automation tools for handwritten Gujarati OCR using computer vision.
+                                Created route optimization algorithms using Dijkstra's algorithm and built a dashboard for visualization.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">Python</span>
@@ -252,17 +197,11 @@
                     <div class="experience-item">
                         <div class="date">Mar 2023 — Apr 2023</div>
                         <div class="job-details">
-                            <h4 class="job-title">Embedded AI Systems Intern · DYU Labs</h4>
-                            <p class="job-desc job-desc-short">
-                                Designed ESP32-CAM-based AI system for person detection in security applications.
-                            </p>
-                            <p class="job-desc job-desc-full">
-                                Designed and implemented an ESP32-CAM-based AI system for person detection in security
-                                applications using Arduino and TinyML, achieving real-time processing for enhanced
-                                situational awareness.
-                                Optimized system performance by leveraging low-power consumption algorithms and TinyML
-                                inference techniques, increasing detection reliability and meeting the stringent
-                                requirements of embedded AI systems.
+                            <h4 class="job-title">Embedded AI Systems Intern</h4>
+                            <div class="company">DYU Labs</div>
+                            <p class="job-desc">
+                                Designed ESP32-CAM-based AI system for person detection using TinyML.
+                                Optimized system performance for low-power consumption and real-time processing.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">ESP32</span>
@@ -282,15 +221,12 @@
                 <div class="projects-list">
 
                     <a href="#" class="project-item">
-                        <div class="project-preview-mini"></div>
                         <div class="job-details">
                             <h4 class="project-title">Assignment Solver <span class="arrow-icon">↗</span></h4>
                             <p class="job-desc">
-                                Developed a Tkinter-based GUI tool for automated question solving, integrating screen
-                                snipping and advanced OCR technology for text recognition with higher accuracy than
-                                Microsoft's solutions.
-                                Utilized LLMs for real-time NLP to generate answers, streamlining workflows and
-                                enhancing productivity.
+                                A Tkinter-based GUI tool for automated question solving. Integrates screen
+                                snipping and advanced OCR technology for text recognition with high accuracy.
+                                Uses LLMs for real-time NLP to generate answers.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">Python</span>
@@ -302,15 +238,13 @@
                     </a>
 
                     <a href="#" class="project-item">
-                        <div class="project-preview-mini"></div>
                         <div class="job-details">
                             <h4 class="project-title">Automated ML Training Platform <span class="arrow-icon">↗</span>
                             </h4>
                             <p class="job-desc">
-                                Built a Streamlit-based web application to simplify machine learning model training and
-                                evaluation, leveraging PyCaret for features like automated preprocessing, tokenization,
-                                vectorization, model comparison, and hyperparameter optimization.
-                                Streamlines regression and classification tasks for rapid prototyping.
+                                Streamlit-based web application for ML model training and evaluation.
+                                Leverages PyCaret for automated preprocessing, tokenization, vectorization,
+                                and hyperparameter optimization.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">Python</span>
@@ -322,20 +256,16 @@
                     </a>
 
                     <a href="#" class="project-item">
-                        <div class="project-preview-mini"></div>
                         <div class="job-details">
                             <h4 class="project-title">Air Drums <span class="arrow-icon">↗</span></h4>
                             <p class="job-desc">
-                                Developed a pioneering virtual drum simulator using IMU sensor technology for real-time
-                                motion tracking, driven by extensive research and innovative deep learning algorithms
-                                that correct motion errors to deliver unprecedented precision and responsiveness in drum
-                                interactions.
+                                Virtual drum simulator using IMU sensor technology for real-time motion tracking.
+                                Uses deep learning algorithms to correct motion errors for precise drum interactions.
                             </p>
                             <div class="tech-tags">
                                 <span class="tag">Python</span>
                                 <span class="tag">Deep Learning</span>
                                 <span class="tag">IMU Sensors</span>
-                                <span class="tag">Motion Tracking</span>
                             </div>
                         </div>
                     </a>
@@ -353,9 +283,7 @@
                         <div class="hackathon-image-container">
                             <!-- Replace src with your actual image path -->
                             <img src="hackathon1.jpg" alt="Hackathon Event" class="hackathon-img">
-                            <div class="hackathon-overlay">
-                                <span class="hackathon-award">🏆 1st Place</span>
-                            </div>
+                            <span class="hackathon-award">🏆 1st Place</span>
                         </div>
                         <div class="hackathon-content">
                             <h4 class="hackathon-name">SunHacks 2024</h4>
@@ -391,7 +319,34 @@
                 </div>
             </section>
 
-            <footer style="margin-top: 4rem; color: #666; font-size: 0.8rem; font-family: var(--font-mono);">
+            <!-- Contact Section -->
+            <section id="contact" class="section-container">
+                <h3 class="section-title">Contact Me</h3>
+                <p class="job-desc" style="margin-bottom: 2rem;">
+                    Interested in collaborating or have a question? Send me a message and I'll get back to you as soon as possible.
+                </p>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="How can we work together?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </section>
+
+            <footer style="margin-top: 4rem; color: var(--text-secondary); font-size: 0.8rem; font-family: var(--font-mono);">
                 <p>Built with HTML & CSS. Deployed with Vercel.</p>
             </footer>
 
