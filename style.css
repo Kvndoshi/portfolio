@@ -1,25 +1,25 @@
 :root {
-    --bg-color: #FAFAFA; /* Clean Professional White/Grey */
-    --text-primary: #111111;
-    --text-secondary: #555555;
-    --accent: #2563eb; /* Professional Blue */
-    --border-light: #E5E5E5;
-    --card-bg: #FFFFFF;
+    --bg-color: #050505; /* Deep Black Background */
+    --text-primary: #EDEDED;
+    --text-secondary: #A1A1AA;
+    --accent: #4ADE80; /* Vibrant Green Accent */
+    --border-light: #27272A;
+    --card-bg: #111111; /* Dark Grey Card Background */
     --nav-height: 60px;
     --font-main: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --shadow-subtle: 0 2px 10px rgba(0,0,0,0.03);
-    --shadow-hover: 0 10px 30px rgba(0,0,0,0.06);
+    --shadow-subtle: 0 4px 20px rgba(0,0,0,0.5);
+    --shadow-hover: 0 10px 40px rgba(74, 222, 128, 0.1);
 }
 
-/* Dark Mode */
+/* Light Mode (Optional, can be removed if you want strictly dark) */
 body.light-mode {
-    /* We are using Light Mode as default for professionalism, but swapping vars if needed */
-    --bg-color: #08090A;
-    --text-primary: #EDEDED;
-    --text-secondary: #A1A1AA;
-    --border-light: #27272A;
-    --card-bg: #111213;
+    --bg-color: #F5F5F5;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --border-light: #E5E5E5;
+    --card-bg: #FFFFFF;
+    --accent: #10B981;
 }
 
 * {
@@ -45,7 +45,7 @@ body {
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    background: rgba(250, 250, 250, 0.85);
+    background: rgba(5, 5, 5, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-light);
     z-index: 1000;
@@ -130,7 +130,7 @@ body {
 /* Top: Profile Info */
 .hero-profile-top {
     padding: 3rem 2rem 2rem;
-    background: linear-gradient(to bottom, rgba(37, 99, 235, 0.03), transparent);
+    background: linear-gradient(to bottom, rgba(74, 222, 128, 0.05), transparent);
 }
 
 .profile-image-wrapper {
@@ -146,7 +146,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--card-bg);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .status-dot {
@@ -155,9 +155,10 @@ body {
     right: 5px;
     width: 18px;
     height: 18px;
-    background: #10B981;
+    background: var(--accent);
     border: 3px solid var(--card-bg);
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
 }
 
 .hero-name {
@@ -171,7 +172,7 @@ body {
 .hero-role {
     font-family: var(--font-mono);
     font-size: 0.95rem;
-    color: var(--text-secondary);
+    color: var(--accent);
     font-weight: 400;
     margin-bottom: 1.5rem;
 }
@@ -203,7 +204,7 @@ body {
 .hero-llm-interface {
     border-top: 1px solid var(--border-light);
     padding: 1.5rem;
-    background: #FAFAFA;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .llm-chat-window {
@@ -219,27 +220,29 @@ body {
 }
 
 .ai-message-start p {
-    background: #FFFFFF;
+    background: var(--bg-color);
     border: 1px solid var(--border-light);
     padding: 0.8rem 1rem;
     border-radius: 12px 12px 12px 2px;
     display: inline-block;
     max-width: 90%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: var(--text-primary);
 }
 
 .llm-input-wrapper {
     display: flex;
     gap: 0.5rem;
-    background: #FFFFFF;
+    background: var(--bg-color);
     border: 1px solid var(--border-light);
     padding: 0.5rem;
     border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .llm-input-hero {
     flex: 1;
+    background: transparent;
     border: none;
     outline: none;
     padding: 0.5rem;
@@ -249,8 +252,8 @@ body {
 }
 
 .llm-send-btn {
-    background: var(--text-primary);
-    color: #fff;
+    background: var(--accent);
+    color: #000;
     border: none;
     border-radius: 8px;
     width: 36px;
@@ -260,10 +263,12 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: transform 0.2s;
+    font-weight: 600;
 }
 
 .llm-send-btn:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
 }
 
 .quick-prompts {
@@ -275,7 +280,7 @@ body {
 }
 
 .quick-prompt-btn {
-    background: #fff;
+    background: transparent;
     border: 1px solid var(--border-light);
     padding: 0.4rem 0.8rem;
     border-radius: 100px;
@@ -288,6 +293,7 @@ body {
 .quick-prompt-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
+    background: rgba(74, 222, 128, 0.05);
 }
 
 /* Content Sections */
@@ -333,8 +339,9 @@ body {
     width: 10px;
     height: 10px;
     background: var(--bg-color);
-    border: 2px solid var(--text-secondary);
+    border: 2px solid var(--accent);
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
 }
 
 .timeline-header {
@@ -378,10 +385,11 @@ body {
 
 .tech-tag {
     font-size: 0.75rem;
-    background: var(--border-light);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
-    color: var(--text-primary);
+    color: var(--text-secondary);
 }
 
 /* Projects Grid */
