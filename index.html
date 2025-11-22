@@ -50,14 +50,15 @@
 
     <div class="layout-container">
 
-        <!-- Hero Section: Profile + LLM Stacked -->
+        <!-- Hero Section: Profile & Digital Twin (Separated) -->
         <section id="hero" class="hero-section-centered">
-            <div class="hero-card">
-                <!-- Top: Profile Info -->
+            
+            <!-- Profile Card -->
+            <div class="hero-card profile-container">
                 <div class="hero-profile-top">
                     <div class="profile-image-wrapper">
                         <img src="profile.jpg" alt="Kevin Doshi" class="profile-photo-large">
-                        <div class="status-dot" title="Online & Ready to Chat"></div>
+                        <div class="status-dot" title="Online"></div>
                     </div>
                     <h1 class="hero-name">Kevin Doshi</h1>
                     <h2 class="hero-role">Computer Vision Engineer</h2>
@@ -70,32 +71,35 @@
                         <a href="mailto:kevindoshi17@gmail.com" class="hero-social-link">Email</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Bottom: Interactive LLM Interface -->
-                <div class="hero-llm-interface">
-                    <div class="llm-chat-window" id="llm-response">
-                        <div class="ai-message-start">
-                            <p>👋 Hi, I'm Kevin's digital twin. I can answer questions about his experience at <strong>ISRO</strong>, his work in <strong>Photogrammetry</strong>, or his technical skills.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="llm-input-wrapper">
-                        <input type="text" class="llm-input-hero" id="llm-input" placeholder="Ask me anything... (e.g., 'Tell me about your projects')">
-                        <button class="llm-send-btn" id="llm-submit">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <div class="quick-prompts">
-                        <button class="quick-prompt-btn" data-prompt="What are your skills?">Skills</button>
-                        <button class="quick-prompt-btn" data-prompt="Experience at ISRO?">ISRO</button>
-                        <button class="quick-prompt-btn" data-prompt="Tell me about 3D Reconstruction">3D Vision</button>
-                    </div>
+            <!-- Digital Twin Card -->
+            <div class="hero-card digital-twin-container">
+                <div class="dt-header">
+                    <h3 class="dt-title">DIGITAL TWIN</h3>
+                    <p class="dt-subtitle">Chat with me</p>
+                </div>
+
+                <div class="llm-chat-window" id="llm-response">
+                    <!-- Responses will appear here -->
+                </div>
+
+                <div class="dt-prompts-label">Ask me about:</div>
+                <div class="dt-prompts">
+                    <button class="dt-tag" data-prompt="What is your tech stack?">Tech Stack</button>
+                    <button class="dt-tag" data-prompt="Tell me about your projects">Projects</button>
+                    <button class="dt-tag" data-prompt="What is your experience?">Experience</button>
+                    <button class="dt-tag" data-prompt="Do you have any hobbies?">Hobbies</button>
+                </div>
+
+                <div class="dt-input-wrapper">
+                    <input type="text" class="dt-input" id="llm-input" placeholder="Type your message...">
+                    <button class="dt-send-btn" id="llm-submit">
+                        →
+                    </button>
                 </div>
             </div>
+
         </section>
 
         <!-- Summary / About Section -->
