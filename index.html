@@ -4,175 +4,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin Doshi | Computer Vision & AI Engineer</title>
-    <meta name="description"
-        content="Portfolio of Kevin Doshi - Computer Vision Engineer & AI/ML Specialist at Arizona State University">
+    <title>Kevin Doshi | Computer Vision Engineer</title>
+    <meta name="description" content="Kevin Doshi - Computer Vision Engineer & AI Specialist.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Background Noise Texture -->
-    <div class="noise-overlay"></div>
-    <div class="gradient-bg"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <div class="bento-container">
+    <div class="container">
         
-        <!-- Profile Card (Large, spans 2 rows on desktop) -->
-        <div class="bento-card profile-card" data-tilt>
-            <div class="card-content">
-                <div class="profile-header">
-                    <div class="profile-img-container">
-                        <img src="profile.jpg" alt="Kevin Doshi" class="profile-img">
-                        <div class="status-indicator"></div>
-                    </div>
-                    <div class="profile-text">
-                        <h1 class="name">Kevin Doshi</h1>
-                        <div class="role-wrapper">
-                            <span class="role-prefix">> </span>
-                            <span class="role-text type-writer">Computer Vision Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="bio">
-                    M.S. CS @ ASU (4.0 GPA). Specializing in <strong>Photogrammetry</strong>, <strong>Deep Learning</strong>, and <strong>Embedded AI</strong>.
-                    <br><br>
-                    Building automated 3D pipelines for <span class="highlight">NASA</span> & <span class="highlight">Lunar Outpost</span>.
+        <!-- Header / Intro -->
+        <header class="hero-section">
+            <div class="hero-content reveal-text">
+                <p class="overline">Portfolio 2025</p>
+                <h1 class="hero-title">Kevin Doshi</h1>
+                <h2 class="hero-subtitle">Computer Vision Engineer & <br>AI Research Specialist</h2>
+                <p class="hero-bio">
+                    M.S. Computer Science at Arizona State University. <br>
+                    Crafting intelligent systems that <em>see</em> and <em>understand</em> the world.
+                    Specializing in Photogrammetry, Deep Learning, and Embedded AI.
                 </p>
-                <div class="social-row">
-                    <a href="http://www.github.com/Kvndoshi" class="social-btn" target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/kvndoshi" class="social-btn" target="_blank">LinkedIn</a>
-                    <a href="#contact" class="social-btn primary">Contact Me</a>
+                
+                <div class="hero-links">
+                    <a href="https://github.com/Kvndoshi" target="_blank" class="text-link">GitHub ↗</a>
+                    <a href="https://linkedin.com/in/kvndoshi" target="_blank" class="text-link">LinkedIn ↗</a>
+                    <a href="#contact" class="text-link">Email ↘</a>
                 </div>
             </div>
-        </div>
+            
+            <div class="hero-image-container reveal-image">
+                <img src="profile.jpg" alt="Kevin Doshi" class="hero-image">
+            </div>
+        </header>
 
-        <!-- KVN LLM Card (Wide) -->
-        <div class="bento-card llm-card" id="kvn-llm" data-tilt>
-            <div class="card-header">
-                <h3>KVN AI Assistant</h3>
-                <div class="live-badge">
-                    <span class="dot"></span> Online
+        <!-- Experience Section -->
+        <section class="section experience-section">
+            <div class="section-label">01 / Experience</div>
+            <div class="content-list">
+                
+                <div class="list-item reveal-item">
+                    <div class="item-header">
+                        <h3 class="item-title">Computer Vision Engineer</h3>
+                        <span class="item-date">2025 — Present</span>
+                    </div>
+                    <div class="item-sub">Arizona State University</div>
+                    <p class="item-desc">
+                        Leading the development of automated 3D reconstruction pipelines for high-resolution mapping of the Moon and Antarctica. Collaborating directly with NASA and Lunar Outpost to integrate photogrammetry data into scientific VR environments.
+                    </p>
+                    <div class="tech-stack">Python · Photogrammetry · VR · Computer Vision</div>
                 </div>
-            </div>
-            <div class="chat-interface">
-                <div class="chat-history" id="llm-response">
-                    <p class="ai-welcome">Hello! I'm Kevin's AI avatar. Ask me about his work at ISRO or his Computer Vision skills.</p>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="llm-input" placeholder="Ask anything (e.g. 'What is your tech stack?')">
-                    <button id="llm-submit">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
 
-        <!-- Tech Stack Card (Tall) -->
-        <div class="bento-card stack-card" data-tilt>
-            <h3>Tech Stack</h3>
-            <div class="stack-grid">
-                <div class="stack-item"><span class="icon">🐍</span> Python</div>
-                <div class="stack-item"><span class="icon">🔥</span> PyTorch</div>
-                <div class="stack-item"><span class="icon">👁️</span> OpenCV</div>
-                <div class="stack-item"><span class="icon">🗺️</span> GIS/GDAL</div>
-                <div class="stack-item"><span class="icon">🔗</span> LangChain</div>
-                <div class="stack-item"><span class="icon">🧊</span> Three.js</div>
-                <div class="stack-item"><span class="icon">📱</span> Flutter</div>
-                <div class="stack-item"><span class="icon">💾</span> SQL</div>
-            </div>
-        </div>
+                <div class="list-item reveal-item">
+                    <div class="item-header">
+                        <h3 class="item-title">AI Research Intern</h3>
+                        <span class="item-date">2024</span>
+                    </div>
+                    <div class="item-sub">Indian Space Research Organisation (ISRO)</div>
+                    <p class="item-desc">
+                        Implemented state-of-the-art semantic segmentation models (U-Net, EfficientNet) for satellite imagery analysis. Engineered a weather-focused Large Language Model using LangChain for meteorological data processing.
+                    </p>
+                    <div class="tech-stack">PyTorch · LangChain · GDAL · Semantic Segmentation</div>
+                </div>
 
-        <!-- Experience Card (Wide) -->
-        <div class="bento-card experience-card" data-tilt>
-            <h3>Experience</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2025 - Present</div>
-                    <div class="timeline-content">
-                        <h4>Computer Vision Engineer</h4>
-                        <span class="company">Arizona State University</span>
-                        <p>Automated 3D reconstruction for NASA & Lunar Outpost.</p>
+                <div class="list-item reveal-item">
+                    <div class="item-header">
+                        <h3 class="item-title">Embedded AI Intern</h3>
+                        <span class="item-date">2023</span>
+                    </div>
+                    <div class="item-sub">DYU Labs</div>
+                    <p class="item-desc">
+                        Designed and deployed real-time person detection systems on ESP32-CAM microcontrollers using TinyML optimization techniques for edge computing.
+                    </p>
+                    <div class="tech-stack">TinyML · C++ · ESP32 · Edge AI</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Selected Works -->
+        <section class="section projects-section">
+            <div class="section-label">02 / Selected Works</div>
+            <div class="grid-list">
+                
+                <a href="#" class="project-card reveal-item">
+                    <div class="card-top">
+                        <span class="project-cat">Tooling</span>
+                        <span class="project-year">2024</span>
+                    </div>
+                    <h3 class="project-title">Assignment Solver</h3>
+                    <p class="project-desc">GUI-based automated question solver integrating OCR and LLMs for real-time answers.</p>
+                </a>
+
+                <a href="#" class="project-card reveal-item">
+                    <div class="card-top">
+                        <span class="project-cat">Hardware + AI</span>
+                        <span class="project-year">2023</span>
+                    </div>
+                    <h3 class="project-title">Air Drums</h3>
+                    <p class="project-desc">Virtual drum kit using IMU sensors and deep learning for motion error correction.</p>
+                </a>
+
+                <a href="#" class="project-card reveal-item">
+                    <div class="card-top">
+                        <span class="project-cat">Platform</span>
+                        <span class="project-year">2023</span>
+                    </div>
+                    <h3 class="project-title">AutoML Platform</h3>
+                    <p class="project-desc">No-code machine learning training and evaluation platform built with Streamlit.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- AI Assistant Section -->
+        <section class="section llm-section">
+            <div class="section-label">03 / AI Interaction</div>
+            <div class="llm-wrapper reveal-item">
+                <div class="llm-intro">
+                    <h3>Ask My Digital Avatar</h3>
+                    <p>Powered by LLMs. Ask about my skills, background, or projects.</p>
+                </div>
+                
+                <div class="chat-box">
+                    <div id="chat-history" class="chat-history"></div>
+                    <div class="input-row">
+                        <input type="text" id="llm-input" placeholder="Type a question...">
+                        <button id="llm-submit">↵</button>
+                    </div>
+                    <div class="suggestions">
+                        <button class="suggestion-btn" data-prompt="What is your tech stack?">Tech Stack</button>
+                        <button class="suggestion-btn" data-prompt="Tell me about ISRO">ISRO Work</button>
+                        <button class="suggestion-btn" data-prompt="Do you know Photogrammetry?">Photogrammetry</button>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2024</div>
-                    <div class="timeline-content">
-                        <h4>AI Research Intern</h4>
-                        <span class="company">ISRO</span>
-                        <p>Satellite imagery semantic segmentation & Weather LLMs.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2023</div>
-                    <div class="timeline-content">
-                        <h4>Embedded AI Intern</h4>
-                        <span class="company">DYU Labs</span>
-                        <p>TinyML on ESP32 for real-time detection.</p>
-                    </div>
-                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Projects Grid -->
-        <div class="bento-card project-card" data-tilt>
-            <div class="project-header">
-                <h3>Assignment Solver</h3>
-                <span class="arrow">↗</span>
+        <!-- Contact -->
+        <section class="section contact-section" id="contact">
+            <div class="section-label">04 / Contact</div>
+            <div class="contact-wrapper reveal-item">
+                <h2 class="contact-heading">Let's build something<br>intelligent together.</h2>
+                <a href="mailto:kevindoshi17@gmail.com" class="email-big">kevindoshi17@gmail.com</a>
+                
+                <footer class="footer">
+                    <p>© 2025 Kevin Doshi</p>
+                    <p>Designed & Developed in Arizona</p>
+                </footer>
             </div>
-            <p>OCR + LLM based automated question solving tool with GUI.</p>
-            <div class="tags">
-                <span>Python</span><span>Tkinter</span><span>OCR</span>
-            </div>
-        </div>
-
-        <div class="bento-card project-card" data-tilt>
-            <div class="project-header">
-                <h3>Air Drums</h3>
-                <span class="arrow">↗</span>
-            </div>
-            <p>Virtual drums using IMU sensors & Deep Learning motion correction.</p>
-            <div class="tags">
-                <span>Deep Learning</span><span>IoT</span>
-            </div>
-        </div>
-
-        <div class="bento-card project-card" data-tilt>
-            <div class="project-header">
-                <h3>Auto ML Platform</h3>
-                <span class="arrow">↗</span>
-            </div>
-            <p>No-code ML training platform using Streamlit & PyCaret.</p>
-            <div class="tags">
-                <span>Streamlit</span><span>AutoML</span>
-            </div>
-        </div>
-
-        <!-- Hackathon Card -->
-        <div class="bento-card hackathon-card" data-tilt>
-            <div class="trophy-icon">🏆</div>
-            <div class="hackathon-info">
-                <h3>SunHacks 2024 Winner</h3>
-                <p>1st Place - Accessibility Tool for Visually Impaired</p>
-            </div>
-        </div>
-
-        <!-- Contact Card -->
-        <div class="bento-card contact-card" id="contact" data-tilt>
-            <h3>Let's Work Together</h3>
-            <form id="contact-form">
-                <input type="email" id="email" placeholder="Your Email" required>
-                <textarea id="message" placeholder="Tell me about your project..." required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+        </section>
 
     </div>
 

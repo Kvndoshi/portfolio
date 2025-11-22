@@ -1,125 +1,95 @@
-// Spotlight Effect
-document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.bento-card');
-    
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+// Custom Cursor Logic
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+
+if (window.matchMedia("(pointer: fine)").matches) {
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        // Dot follows instantly
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Outline follows with slight delay via CSS transition
+        // But we set position directly for performance
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
     });
-});
 
-// 3D Tilt Effect
-document.querySelectorAll('.bento-card[data-tilt]').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = ((y - centerY) / centerY) * -2; // Max rotation deg
-        const rotateY = ((x - centerX) / centerX) * 2;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    // Hover effects for cursor
+    const interactives = document.querySelectorAll('a, button, .project-card');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            document.body.classList.add('hovering');
+        });
+        el.addEventListener('mouseleave', () => {
+            document.body.classList.remove('hovering');
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-    });
-});
-
-// Typewriter Effect
-const roleElement = document.querySelector('.role-text');
-const roles = [
-    "Computer Vision Engineer",
-    "AI/ML Specialist",
-    "Deep Learning Researcher",
-    "Photogrammetry Expert"
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typeSpeed = 100;
-
-function typeRole() {
-    if (!roleElement) return;
-    
-    const currentRole = roles[roleIndex];
-    
-    if (isDeleting) {
-        roleElement.textContent = currentRole.substring(0, charIndex - 1);
-        charIndex--;
-        typeSpeed = 50;
-    } else {
-        roleElement.textContent = currentRole.substring(0, charIndex + 1);
-        charIndex++;
-        typeSpeed = 100;
-    }
-
-    if (!isDeleting && charIndex === currentRole.length) {
-        isDeleting = true;
-        typeSpeed = 2000;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        roleIndex = (roleIndex + 1) % roles.length;
-        typeSpeed = 500;
-    }
-
-    setTimeout(typeRole, typeSpeed);
 }
 
-typeRole();
+// Scroll Reveal Logic
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
 
-// LLM Interaction (Mock)
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); // Only animate once
+        }
+    });
+}, observerOptions);
+
+const revealElements = document.querySelectorAll('.reveal-text, .reveal-image, .reveal-item');
+revealElements.forEach(el => observer.observe(el));
+
+
+// LLM Interaction Logic
 const llmInput = document.getElementById('llm-input');
 const llmSubmit = document.getElementById('llm-submit');
-const llmResponse = document.getElementById('llm-response');
+const chatHistory = document.getElementById('chat-history');
+const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('chat-msg', sender);
+    msgDiv.textContent = text;
+    chatHistory.appendChild(msgDiv);
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+}
 
 function handleLLMSubmit() {
     const query = llmInput.value.trim();
     if (!query) return;
 
     // User Message
-    const userMsg = document.createElement('div');
-    userMsg.className = 'user-msg';
-    userMsg.style.textAlign = 'right';
-    userMsg.style.marginTop = '10px';
-    userMsg.style.color = '#fff';
-    userMsg.textContent = query;
-    llmResponse.appendChild(userMsg);
-    
+    addMessage(query, 'user');
     llmInput.value = '';
-    
-    // AI Thinking
-    const aiMsg = document.createElement('div');
-    aiMsg.className = 'ai-msg';
-    aiMsg.style.marginTop = '10px';
-    aiMsg.style.color = '#a1a1aa';
-    aiMsg.textContent = 'Thinking...';
-    llmResponse.appendChild(aiMsg);
-    
-    // Scroll to bottom
-    llmResponse.scrollTop = llmResponse.scrollHeight;
 
+    // Simulate AI thinking
     setTimeout(() => {
-        aiMsg.textContent = generateMockResponse(query);
-    }, 1000);
+        const response = generateMockResponse(query);
+        addMessage(response, 'ai');
+    }, 800);
 }
 
 function generateMockResponse(query) {
     const q = query.toLowerCase();
-    if (q.includes('skill') || q.includes('stack')) {
-        return "My stack includes Python, PyTorch, OpenCV, and LangChain. I specialize in Photogrammetry and Embedded AI.";
+    if (q.includes('stack') || q.includes('tech')) {
+        return "My technical toolkit includes Python, PyTorch, and OpenCV. I specialize in Photogrammetry, 3D Reconstruction, and Embedded AI systems.";
     } else if (q.includes('isro')) {
-        return "At ISRO, I worked on semantic segmentation for satellite imagery using U-Net and EfficientNet.";
+        return "During my time at ISRO, I focused on semantic segmentation of satellite imagery using architectures like U-Net and EfficientNet to analyze complex geospatial data.";
+    } else if (q.includes('photo') || q.includes('3d')) {
+        return "I'm currently building automated 3D reconstruction pipelines for NASA & Lunar Outpost, turning 2D imagery into high-fidelity 3D models for VR exploration.";
     } else {
-        return "I can tell you about my projects, skills, or experience. Try asking 'What did you do at NASA?'";
+        return "I can tell you about my Computer Vision research, my work with NASA/ISRO, or my projects. What would you like to know?";
     }
 }
 
@@ -129,3 +99,12 @@ if (llmSubmit) {
         if (e.key === 'Enter') handleLLMSubmit();
     });
 }
+
+// Handle suggestions
+suggestionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const prompt = btn.getAttribute('data-prompt');
+        llmInput.value = prompt;
+        handleLLMSubmit();
+    });
+});
