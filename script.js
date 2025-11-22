@@ -16,8 +16,8 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', theme);
 });
 
-// Navigation Active State
-const navLinks = document.querySelectorAll('.nav-link');
+// Navigation Active State (Top Nav)
+const navLinks = document.querySelectorAll('.nav-link-top');
 const sections = document.querySelectorAll('section[id]');
 
 function setActiveNav() {
@@ -25,7 +25,7 @@ function setActiveNav() {
 
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 200;
+        const sectionTop = section.offsetTop - 100; // Offset for sticky header
         const sectionId = section.getAttribute('id');
 
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -49,9 +49,15 @@ navLinks.forEach(link => {
         const targetSection = document.querySelector(targetId);
 
         if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const offset = 80; // Height of sticky nav + padding
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = targetSection.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
         }
     });
@@ -94,21 +100,44 @@ function handleLLMSubmit() {
     if (!query) return;
 
     // Show loading state
-    llmResponse.classList.add('active');
-    llmResponse.innerHTML = '<span class="typing">Thinking...</span>';
+    // llmResponse.classList.add('active');
+    const loadingMsg = document.createElement('div');
+    loadingMsg.innerHTML = '<span class="typing" style="color: var(--text-secondary);">Thinking...</span>';
+    llmResponse.appendChild(loadingMsg);
+    llmResponse.scrollTop = llmResponse.scrollHeight;
 
     // Simulate API delay
     setTimeout(() => {
+        // Remove loading message
+        llmResponse.removeChild(loadingMsg);
+        
         // In a real app, you would fetch from your backend here
         const mockResponse = generateMockResponse(query);
-        typeWriter(mockResponse, llmResponse);
-    }, 1500);
+        
+        // Append User Query
+        const userDiv = document.createElement('div');
+        userDiv.style.marginBottom = '0.5rem';
+        userDiv.style.color = 'var(--text-secondary)';
+        userDiv.style.fontSize = '0.85rem';
+        userDiv.textContent = `> ${query}`;
+        llmResponse.appendChild(userDiv);
+
+        // Append AI Response with Typewriter
+        const aiDiv = document.createElement('div');
+        aiDiv.style.marginBottom = '1.5rem';
+        aiDiv.style.color = 'var(--text-primary)';
+        llmResponse.appendChild(aiDiv);
+        
+        typeWriter(mockResponse, aiDiv);
+        
+        llmInput.value = '';
+    }, 1000);
 }
 
 function generateMockResponse(query) {
     // Simple keyword matching for demo purposes
     const q = query.toLowerCase();
-    if (q.includes('skill') || q.includes('stack')) {
+    if (q.includes('skill') || q.includes('stack') || q.includes('technical')) {
         return "My technical expertise includes **Python, PyTorch, and Computer Vision**. I specialize in building automated pipelines for 3D reconstruction and semantic segmentation. I'm also experienced with LLMs, LangChain, and embedded AI systems like ESP32.";
     } else if (q.includes('isro')) {
         return "At **ISRO**, I worked as an AI Research Intern where I implemented semantic segmentation models (U-Net, EfficientNet) for satellite imagery. I also developed a weather-focused LLM using LangChain to analyze meteorological data.";
@@ -122,9 +151,8 @@ function generateMockResponse(query) {
 }
 
 function typeWriter(text, element) {
-    element.innerHTML = '';
     let i = 0;
-    const speed = 20; // typing speed in ms
+    const speed = 15; // typing speed in ms
 
     function type() {
         if (i < text.length) {
@@ -142,6 +170,7 @@ function typeWriter(text, element) {
                 element.innerHTML += text.charAt(i);
                 i++;
             }
+            llmResponse.scrollTop = llmResponse.scrollHeight;
             setTimeout(type, speed);
         }
     }
