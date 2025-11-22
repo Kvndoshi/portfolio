@@ -1,84 +1,40 @@
-// Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Check for saved theme preference or default to dark mode
-const currentTheme = localStorage.getItem('theme') || 'dark';
-if (currentTheme === 'light') {
-    body.classList.add('light-mode');
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-
-    // Save preference
-    const theme = body.classList.contains('light-mode') ? 'light' : 'dark';
-    localStorage.setItem('theme', theme);
-});
-
-// Navigation Active State
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section[id]');
-
-function setActiveNav() {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 200;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}
-
-window.addEventListener('scroll', setActiveNav);
-
-// Smooth Scroll
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+// Spotlight Effect
+document.addEventListener('mousemove', (e) => {
+    const cards = document.querySelectorAll('.bento-card');
+    
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
     });
 });
 
-// Scroll Reveal Animation
-const revealElements = document.querySelectorAll('.section-container');
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-            revealObserver.unobserve(entry.target); // Only animate once
-        }
+// 3D Tilt Effect
+document.querySelectorAll('.bento-card[data-tilt]').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -2; // Max rotation deg
+        const rotateY = ((x - centerX) / centerX) * 2;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
-}, {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
 });
 
-revealElements.forEach(element => {
-    revealObserver.observe(element);
-});
-
-
-// Role Typewriter Effect
-const roleElement = document.querySelector('.role');
+// Typewriter Effect
+const roleElement = document.querySelector('.role-text');
 const roles = [
     "Computer Vision Engineer",
     "AI/ML Specialist",
@@ -92,6 +48,8 @@ let isDeleting = false;
 let typeSpeed = 100;
 
 function typeRole() {
+    if (!roleElement) return;
+    
     const currentRole = roles[roleIndex];
     
     if (isDeleting) {
@@ -106,149 +64,68 @@ function typeRole() {
 
     if (!isDeleting && charIndex === currentRole.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at end
+        typeSpeed = 2000;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        typeSpeed = 500; // Pause before typing next
+        typeSpeed = 500;
     }
 
     setTimeout(typeRole, typeSpeed);
 }
 
-// Start typing effect if element exists
-if (roleElement) {
-    typeRole();
-}
+typeRole();
 
-
-// KVN LLM Interaction
+// LLM Interaction (Mock)
 const llmInput = document.getElementById('llm-input');
 const llmSubmit = document.getElementById('llm-submit');
 const llmResponse = document.getElementById('llm-response');
-const promptButtons = document.querySelectorAll('.prompt-btn');
-
-// Handle prompt button clicks
-if (promptButtons) {
-    promptButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const prompt = btn.getAttribute('data-prompt');
-            if (llmInput) {
-                llmInput.value = prompt;
-                llmInput.focus();
-                // Optional: Auto-submit
-                // handleLLMSubmit();
-            }
-        });
-    });
-}
-
-// Handle submit
-if (llmSubmit) {
-    llmSubmit.addEventListener('click', handleLLMSubmit);
-}
-
-if (llmInput) {
-    llmInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleLLMSubmit();
-    });
-}
 
 function handleLLMSubmit() {
     const query = llmInput.value.trim();
     if (!query) return;
 
-    // Show loading state
-    llmResponse.classList.add('active');
-    llmResponse.innerHTML = '<span class="typing">Thinking...</span>';
+    // User Message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'user-msg';
+    userMsg.style.textAlign = 'right';
+    userMsg.style.marginTop = '10px';
+    userMsg.style.color = '#fff';
+    userMsg.textContent = query;
+    llmResponse.appendChild(userMsg);
+    
+    llmInput.value = '';
+    
+    // AI Thinking
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'ai-msg';
+    aiMsg.style.marginTop = '10px';
+    aiMsg.style.color = '#a1a1aa';
+    aiMsg.textContent = 'Thinking...';
+    llmResponse.appendChild(aiMsg);
+    
+    // Scroll to bottom
+    llmResponse.scrollTop = llmResponse.scrollHeight;
 
-    // Simulate API delay
     setTimeout(() => {
-        // In a real app, you would fetch from your backend here
-        const mockResponse = generateMockResponse(query);
-        typeWriter(mockResponse, llmResponse);
-    }, 1500);
+        aiMsg.textContent = generateMockResponse(query);
+    }, 1000);
 }
 
 function generateMockResponse(query) {
-    // Simple keyword matching for demo purposes
     const q = query.toLowerCase();
-    if (q.includes('skill') || q.includes('stack') || q.includes('technical')) {
-        return "My technical expertise includes **Python, PyTorch, and Computer Vision**. I specialize in building automated pipelines for 3D reconstruction and semantic segmentation. I'm also experienced with LLMs, LangChain, and embedded AI systems like ESP32.";
+    if (q.includes('skill') || q.includes('stack')) {
+        return "My stack includes Python, PyTorch, OpenCV, and LangChain. I specialize in Photogrammetry and Embedded AI.";
     } else if (q.includes('isro')) {
-        return "At **ISRO**, I worked as an AI Research Intern where I implemented semantic segmentation models (U-Net, EfficientNet) for satellite imagery. I also developed a weather-focused LLM using LangChain to analyze meteorological data.";
-    } else if (q.includes('project')) {
-        return "I've built several impactful projects, including an **Automated ML Training Platform** using Streamlit and PyCaret, and **Air Drums**, a virtual instrument using IMU sensors and deep learning. Currently, I'm working on 3D reconstruction pipelines for NASA.";
-    } else if (q.includes('education') || q.includes('asu')) {
-        return "I'm currently pursuing my **M.S. in Computer Science at Arizona State University** with a 4.00 GPA. My coursework focuses on Artificial Intelligence, Machine Learning, and Visual Computing.";
+        return "At ISRO, I worked on semantic segmentation for satellite imagery using U-Net and EfficientNet.";
     } else {
-        return "That's an interesting question! As an AI assistant for Kevin's portfolio, I can tell you about his work in Computer Vision, his time at ISRO, or his projects at ASU. Feel free to ask about any of those topics.";
+        return "I can tell you about my projects, skills, or experience. Try asking 'What did you do at NASA?'";
     }
 }
 
-function typeWriter(text, element) {
-    element.innerHTML = '';
-    let i = 0;
-    const speed = 20; // typing speed in ms
-
-    function type() {
-        if (i < text.length) {
-            // Handle bold formatting (simple implementation)
-            if (text.substring(i).startsWith('**')) {
-                const end = text.indexOf('**', i + 2);
-                if (end !== -1) {
-                    element.innerHTML += '<strong>' + text.substring(i + 2, end) + '</strong>';
-                    i = end + 2;
-                } else {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                }
-            } else {
-                element.innerHTML += text.charAt(i);
-                i++;
-            }
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// Contact Form Handling
-const contactForm = document.getElementById('contact-form');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        const originalText = submitBtn.innerText;
-
-        // Simulate sending
-        submitBtn.innerText = 'Sending...';
-        submitBtn.disabled = true;
-
-        setTimeout(() => {
-            // Construct mailto link
-            const subject = `Portfolio Contact from ${name}`;
-            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-            const mailtoLink = `mailto:kevindoshi17@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Open mail client
-            window.location.href = mailtoLink;
-            
-            // Reset form visual state
-            submitBtn.innerText = 'Message Opened!';
-            submitBtn.style.color = '#4ADE80';
-            
-            setTimeout(() => {
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.color = '';
-                contactForm.reset();
-            }, 3000);
-        }, 1000);
+if (llmSubmit) {
+    llmSubmit.addEventListener('click', handleLLMSubmit);
+    llmInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleLLMSubmit();
     });
 }

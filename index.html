@@ -10,350 +10,170 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Background Noise Texture -->
+    <div class="noise-overlay"></div>
+    <div class="gradient-bg"></div>
 
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
-
-    <div class="layout-container">
-
-        <!-- Left Sidebar: Fixed Profile -->
-        <aside class="sidebar">
-            <div class="profile-section">
-                <div class="profile-photo-container">
-                    <img src="profile.jpg" alt="Kevin Doshi" class="profile-photo">
-                    <div class="scan-line"></div>
-                </div>
-                <div class="profile-info-text">
-                    <h1 class="name">Kevin Doshi</h1>
-                    <h2 class="role">Computer Vision Engineer</h2>
+    <div class="bento-container">
+        
+        <!-- Profile Card (Large, spans 2 rows on desktop) -->
+        <div class="bento-card profile-card" data-tilt>
+            <div class="card-content">
+                <div class="profile-header">
+                    <div class="profile-img-container">
+                        <img src="profile.jpg" alt="Kevin Doshi" class="profile-img">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="profile-text">
+                        <h1 class="name">Kevin Doshi</h1>
+                        <div class="role-wrapper">
+                            <span class="role-prefix">> </span>
+                            <span class="role-text type-writer">Computer Vision Engineer</span>
+                        </div>
+                    </div>
                 </div>
                 <p class="bio">
-                    M.S. Computer Science student at Arizona State University (4.00 GPA).
-                    Building the future with Computer Vision, Deep Learning, and Photogrammetry.
+                    M.S. CS @ ASU (4.0 GPA). Specializing in <strong>Photogrammetry</strong>, <strong>Deep Learning</strong>, and <strong>Embedded AI</strong>.
+                    <br><br>
+                    Building automated 3D pipelines for <span class="highlight">NASA</span> & <span class="highlight">Lunar Outpost</span>.
                 </p>
-            </div>
-
-            <nav class="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#kvn-llm" class="nav-link">KVN LLM</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#hackathons" class="nav-link">Hackathons</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-
-            <div class="social-links">
-                <a href="http://www.github.com/Kvndoshi" class="social-icon" title="GitHub" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/kvndoshi" class="social-icon" title="LinkedIn" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-            </div>
-        </aside>
-
-        <!-- Right Content: Scrollable Feed -->
-        <main class="main-content">
-
-            <!-- About Section -->
-            <section id="about" class="section-container">
-                <h3 class="section-title">About Me</h3>
-                <p class="job-desc" style="margin-bottom: 1rem;">
-                    I'm a graduate student pursuing my <strong>M.S. in Computer Science at Arizona State
-                        University</strong> (4.00 GPA), specializing in AI/ML, Computer Vision, and Deep Learning.
-                    With hands-on experience at <strong>ISRO</strong>, <strong>ASU's Digital Discovery
-                        Initiative</strong>, and multiple AI-focused roles, I've developed expertise in semantic
-                    segmentation, LLM fine-tuning, photogrammetry, and embedded AI systems.
-                </p>
-                <p class="job-desc">
-                    My main focus these days is developing automated 3D reconstruction pipelines using photogrammetry
-                    and computer vision at <strong>ASU</strong>, collaborating with <strong>NASA</strong> and
-                    <strong>Lunar Outpost</strong> to generate high-resolution models of inaccessible regions like the
-                    Moon and Antarctica.
-                </p>
-            </section>
-
-            <!-- KVN LLM Section -->
-            <section id="kvn-llm" class="section-container">
-                <div class="llm-header">
-                    <h3 class="section-title">KVN LLM</h3>
-                    <span class="llm-badge">AI-Powered</span>
+                <div class="social-row">
+                    <a href="http://www.github.com/Kvndoshi" class="social-btn" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/kvndoshi" class="social-btn" target="_blank">LinkedIn</a>
+                    <a href="#contact" class="social-btn primary">Contact Me</a>
                 </div>
-                <p class="llm-description">
-                    An intelligent assistant powered by advanced language models. Ask questions about my experience,
-                    technical skills, projects, or anything else you'd like to know.
-                </p>
+            </div>
+        </div>
 
-                <div class="llm-prompts">
-                    <div class="prompt-buttons">
-                        <button class="prompt-btn" data-prompt="What are your main technical skills?">💻 Technical
-                            Skills</button>
-                        <button class="prompt-btn" data-prompt="Tell me about your experience at ISRO">🚀 ISRO
-                            Experience</button>
-                        <button class="prompt-btn" data-prompt="What projects have you built with AI/ML?">🤖 AI/ML
-                            Projects</button>
-                        <button class="prompt-btn" data-prompt="What's your educational background?">🎓
-                            Education</button>
-                    </div>
+        <!-- KVN LLM Card (Wide) -->
+        <div class="bento-card llm-card" id="kvn-llm" data-tilt>
+            <div class="card-header">
+                <h3>KVN AI Assistant</h3>
+                <div class="live-badge">
+                    <span class="dot"></span> Online
                 </div>
-
-                <div class="llm-container">
-                    <input type="text" class="llm-input" id="llm-input" placeholder="Ask me anything...">
-                    <button class="llm-submit" id="llm-submit" aria-label="Send">
-                        →
+            </div>
+            <div class="chat-interface">
+                <div class="chat-history" id="llm-response">
+                    <p class="ai-welcome">Hello! I'm Kevin's AI avatar. Ask me about his work at ISRO or his Computer Vision skills.</p>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="llm-input" placeholder="Ask anything (e.g. 'What is your tech stack?')">
+                    <button id="llm-submit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
                     </button>
                 </div>
-                <div class="llm-response" id="llm-response"></div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Experience Section -->
-            <section id="experience" class="section-container">
-                <h3 class="section-title">Experience</h3>
-                <div class="experience-list">
+        <!-- Tech Stack Card (Tall) -->
+        <div class="bento-card stack-card" data-tilt>
+            <h3>Tech Stack</h3>
+            <div class="stack-grid">
+                <div class="stack-item"><span class="icon">🐍</span> Python</div>
+                <div class="stack-item"><span class="icon">🔥</span> PyTorch</div>
+                <div class="stack-item"><span class="icon">👁️</span> OpenCV</div>
+                <div class="stack-item"><span class="icon">🗺️</span> GIS/GDAL</div>
+                <div class="stack-item"><span class="icon">🔗</span> LangChain</div>
+                <div class="stack-item"><span class="icon">🧊</span> Three.js</div>
+                <div class="stack-item"><span class="icon">📱</span> Flutter</div>
+                <div class="stack-item"><span class="icon">💾</span> SQL</div>
+            </div>
+        </div>
 
-                    <div class="experience-item">
-                        <div class="date">Feb 2025 — Present</div>
-                        <div class="job-details">
-                            <h4 class="job-title">Computer Vision Engineer</h4>
-                            <div class="company">Arizona State University</div>
-                            <p class="job-desc">
-                                Developing an automated pipeline using photogrammetry and computer vision to generate
-                                high-resolution 3D models of inaccessible regions like the Moon, Antarctica, and coral
-                                reefs. Collaborating with NASA and Lunar Outpost to integrate 3D reconstructions
-                                into VR systems for scientific analysis.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">Photogrammetry</span>
-                                <span class="tag">VR Integration</span>
-                            </div>
-                        </div>
+        <!-- Experience Card (Wide) -->
+        <div class="bento-card experience-card" data-tilt>
+            <h3>Experience</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 - Present</div>
+                    <div class="timeline-content">
+                        <h4>Computer Vision Engineer</h4>
+                        <span class="company">Arizona State University</span>
+                        <p>Automated 3D reconstruction for NASA & Lunar Outpost.</p>
                     </div>
-
-                    <div class="experience-item">
-                        <div class="date">Jan 2024 — Aug 2024</div>
-                        <div class="job-details">
-                            <h4 class="job-title">AI Research Intern</h4>
-                            <div class="company">Indian Space Research Organisation (ISRO)</div>
-                            <p class="job-desc">
-                                Implemented semantic segmentation using PyTorch (U-Net, EfficientNet, SegFormer) for satellite imagery analysis.
-                                Contributed to a weather-focused LLM using LangChain and generative AI.
-                                Designed an end-to-end pipeline for satellite imagery processing using GDAL and QGIS.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">PyTorch</span>
-                                <span class="tag">LangChain</span>
-                                <span class="tag">GDAL</span>
-                                <span class="tag">Semantic Segmentation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="date">May 2023 — Jan 2024</div>
-                        <div class="job-details">
-                            <h4 class="job-title">AI Solutions Developer</h4>
-                            <div class="company">Dhrumin Gas Service</div>
-                            <p class="job-desc">
-                                Developed AI automation tools for handwritten Gujarati OCR using computer vision.
-                                Created route optimization algorithms using Dijkstra's algorithm and built a dashboard for visualization.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Flask</span>
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">OCR</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="date">Mar 2023 — Apr 2023</div>
-                        <div class="job-details">
-                            <h4 class="job-title">Embedded AI Systems Intern</h4>
-                            <div class="company">DYU Labs</div>
-                            <p class="job-desc">
-                                Designed ESP32-CAM-based AI system for person detection using TinyML.
-                                Optimized system performance for low-power consumption and real-time processing.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">ESP32</span>
-                                <span class="tag">TinyML</span>
-                                <span class="tag">Arduino</span>
-                                <span class="tag">Embedded AI</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects" class="section-container">
-                <h3 class="section-title">Projects</h3>
-                <div class="projects-list">
-
-                    <a href="#" class="project-item">
-                        <div class="job-details">
-                            <h4 class="project-title">Assignment Solver <span class="arrow-icon">↗</span></h4>
-                            <p class="job-desc">
-                                A Tkinter-based GUI tool for automated question solving. Integrates screen
-                                snipping and advanced OCR technology for text recognition with high accuracy.
-                                Uses LLMs for real-time NLP to generate answers.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Tkinter</span>
-                                <span class="tag">OCR</span>
-                                <span class="tag">LLM</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="project-item">
-                        <div class="job-details">
-                            <h4 class="project-title">Automated ML Training Platform <span class="arrow-icon">↗</span>
-                            </h4>
-                            <p class="job-desc">
-                                Streamlit-based web application for ML model training and evaluation.
-                                Leverages PyCaret for automated preprocessing, tokenization, vectorization,
-                                and hyperparameter optimization.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Streamlit</span>
-                                <span class="tag">PyCaret</span>
-                                <span class="tag">ML</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="project-item">
-                        <div class="job-details">
-                            <h4 class="project-title">Air Drums <span class="arrow-icon">↗</span></h4>
-                            <p class="job-desc">
-                                Virtual drum simulator using IMU sensor technology for real-time motion tracking.
-                                Uses deep learning algorithms to correct motion errors for precise drum interactions.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Deep Learning</span>
-                                <span class="tag">IMU Sensors</span>
-                            </div>
-                        </div>
-                    </a>
-
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h4>AI Research Intern</h4>
+                        <span class="company">ISRO</span>
+                        <p>Satellite imagery semantic segmentation & Weather LLMs.</p>
+                    </div>
                 </div>
-            </section>
-
-            <!-- Hackathon Section -->
-            <section id="hackathons" class="section-container">
-                <h3 class="section-title">Hackathons</h3>
-                <div class="hackathon-grid">
-
-                    <!-- Hackathon Item 1 -->
-                    <div class="hackathon-card">
-                        <div class="hackathon-image-container">
-                            <!-- Replace src with your actual image path -->
-                            <img src="hackathon1.jpg" alt="Hackathon Event" class="hackathon-img">
-                            <span class="hackathon-award">🏆 1st Place</span>
-                        </div>
-                        <div class="hackathon-content">
-                            <h4 class="hackathon-name">SunHacks 2024</h4>
-                            <p class="hackathon-desc">
-                                Built an AI-powered accessibility tool for visually impaired users.
-                                Leveraged computer vision to describe surroundings in real-time.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">OpenAI API</span>
-                            </div>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h4>Embedded AI Intern</h4>
+                        <span class="company">DYU Labs</span>
+                        <p>TinyML on ESP32 for real-time detection.</p>
                     </div>
-
-                    <!-- Hackathon Item 2 -->
-                    <div class="hackathon-card">
-                        <div class="hackathon-image-container">
-                            <img src="hackathon2.jpg" alt="Hackathon Event" class="hackathon-img">
-                        </div>
-                        <div class="hackathon-content">
-                            <h4 class="hackathon-name">HackArizona</h4>
-                            <p class="hackathon-desc">
-                                Developed a decentralized voting system using blockchain technology.
-                                Ensured transparent and tamper-proof election results.
-                            </p>
-                            <div class="tech-tags">
-                                <span class="tag">Blockchain</span>
-                                <span class="tag">Solidity</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Contact Section -->
-            <section id="contact" class="section-container">
-                <h3 class="section-title">Contact Me</h3>
-                <p class="job-desc" style="margin-bottom: 2rem;">
-                    Interested in collaborating or have a question? Send me a message and I'll get back to you as soon as possible.
-                </p>
-                
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" placeholder="How can we work together?" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </section>
+        <!-- Projects Grid -->
+        <div class="bento-card project-card" data-tilt>
+            <div class="project-header">
+                <h3>Assignment Solver</h3>
+                <span class="arrow">↗</span>
+            </div>
+            <p>OCR + LLM based automated question solving tool with GUI.</p>
+            <div class="tags">
+                <span>Python</span><span>Tkinter</span><span>OCR</span>
+            </div>
+        </div>
 
-            <footer style="margin-top: 4rem; color: var(--text-secondary); font-size: 0.8rem; font-family: var(--font-mono);">
-                <p>Built with HTML & CSS. Deployed with Vercel.</p>
-            </footer>
+        <div class="bento-card project-card" data-tilt>
+            <div class="project-header">
+                <h3>Air Drums</h3>
+                <span class="arrow">↗</span>
+            </div>
+            <p>Virtual drums using IMU sensors & Deep Learning motion correction.</p>
+            <div class="tags">
+                <span>Deep Learning</span><span>IoT</span>
+            </div>
+        </div>
 
-        </main>
+        <div class="bento-card project-card" data-tilt>
+            <div class="project-header">
+                <h3>Auto ML Platform</h3>
+                <span class="arrow">↗</span>
+            </div>
+            <p>No-code ML training platform using Streamlit & PyCaret.</p>
+            <div class="tags">
+                <span>Streamlit</span><span>AutoML</span>
+            </div>
+        </div>
+
+        <!-- Hackathon Card -->
+        <div class="bento-card hackathon-card" data-tilt>
+            <div class="trophy-icon">🏆</div>
+            <div class="hackathon-info">
+                <h3>SunHacks 2024 Winner</h3>
+                <p>1st Place - Accessibility Tool for Visually Impaired</p>
+            </div>
+        </div>
+
+        <!-- Contact Card -->
+        <div class="bento-card contact-card" id="contact" data-tilt>
+            <h3>Let's Work Together</h3>
+            <form id="contact-form">
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Tell me about your project..." required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
